@@ -5,6 +5,8 @@ using Sirenix.OdinInspector;
 
 public class Hexagon : MonoBehaviour
 {
+    [SerializeField] GameObject ant;
+
     [Header("Mesh and Materials")]
     [SerializeField] MeshRenderer mesh;
     [SerializeField] Material highlightedMat;
@@ -14,11 +16,21 @@ public class Hexagon : MonoBehaviour
     [Header("Layer Mask")]
     [SerializeField] LayerMask hexLayerMask;
 
+
+
     [ShowInInspector] private GameObject objectOnCell;
+    [ShowInInspector] private bool walkable = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        int x = Random.Range(1, 51);
+        if (x > 43)
+        {
+            if (objectOnCell == null)
+                Instantiate(ant, transform.position, transform.rotation);
+        }
+            
     }
 
     // Update is called once per frame
@@ -26,6 +38,12 @@ public class Hexagon : MonoBehaviour
     {
         
     }
+
+    public void SetWalkable(bool canWalk)
+    {
+        walkable = canWalk;
+    }
+
 
     public void HighlightHex()
     {
@@ -46,7 +64,7 @@ public class Hexagon : MonoBehaviour
         {
             foreach (Collider hex in surroundingHexes)
             {
-                if (hex.transform.parent != this.transform)
+                if (hex.transform != this.transform)
                     hex.GetComponentInParent<Hexagon>().HighlightHex();
             }
         }
@@ -54,7 +72,7 @@ public class Hexagon : MonoBehaviour
         {
             foreach (Collider hex in surroundingHexes)
             {
-                if (hex.transform.parent != this.transform)
+                if (hex.transform != this.transform)
                     hex.GetComponentInParent<Hexagon>().DefaultHex();
             }
         }
@@ -67,4 +85,5 @@ public class Hexagon : MonoBehaviour
     }
 
     public GameObject GetObjectOnCell() { return objectOnCell; }
+    public void SetObjectOnCell(GameObject obj) { objectOnCell = obj; }
 }
