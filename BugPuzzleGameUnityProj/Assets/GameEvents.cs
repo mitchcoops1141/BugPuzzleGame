@@ -12,37 +12,12 @@ public class GameEvents : MonoBehaviour
         current = this;
     }
 
-    public event Action PlayerMoveFinsishedAction;
-    public void PlayerMoveFinished()
+    public event Action<Vector3> MouseHoverBorderAction;
+    public void MouseHoverBorder(Vector3 direction)
     {
-        if (PlayerMoveFinsishedAction != null)
+        if (MouseHoverBorderAction != null)
         {
-            PlayerMoveFinsishedAction();
+            MouseHoverBorderAction(direction);
         }
-    }
-
-    public event Action BugsMovedFinishedAction;
-    public void BugsMovedFinished()
-    {
-        if (BugsMovedFinishedAction != null)
-        {
-            BugsMovedFinishedAction();
-        }
-    }
-
-    public Func<Transform> GetPlayerLocationAction;
-    public void GetPlayerLocation(Func<Transform> returnTransform)
-    {
-        GetPlayerLocationAction = returnTransform;
-    }
-
-    public Transform ReturnPlayerLocation()
-    {
-        if (GetPlayerLocationAction != null)
-        {
-            return GetPlayerLocationAction();
-        }
-
-        return null;
     }
 }

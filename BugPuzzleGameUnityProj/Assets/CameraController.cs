@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] Transform player;
-    [SerializeField] float cameraSpeed;
+    [SerializeField] float speed;
+    Vector3 moveToPos = Vector3.zero;
 
-
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        Vector3 lerpToPos = player.position;
-        lerpToPos.y = transform.position.y;
+        moveToPos = transform.position;
+        GameEvents.current.MouseHoverBorderAction += UpdateMovePosition;
+    }
 
-        //lerp POS
-        transform.position = Vector3.Lerp(transform.position, lerpToPos, Time.deltaTime * cameraSpeed);
+    void UpdateMovePosition(Vector3 pos)
+    {
+        moveToPos = pos;
+    }
+
+    private void Update()
+    {
+        print(moveToPos);
+        moveToPos.y = 0;
+
+        transform.Translate(moveToPos * speed * Time.deltaTime);
     }
 }

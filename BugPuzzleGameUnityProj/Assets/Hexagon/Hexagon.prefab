@@ -91,7 +91,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5317559302231273887}
   - component: {fileID: 6258571008435080414}
-  - component: {fileID: 2246303458140029793}
   - component: {fileID: 3130638766752521872}
   m_Layer: 6
   m_Name: Hexagon
@@ -131,25 +130,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2246303458140029793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7761508389905474805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1d559a705ab7744c8d7bb6f80b466db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ant: {fileID: 9126609402946570712, guid: 24656e97956914e4fbe213113e786b39, type: 3}
-  mesh: {fileID: 4352810313549139532}
-  highlightedMat: {fileID: 2100000, guid: f5b2a7ceebe082346b82229bbbf3d2df, type: 2}
-  defaultMat: {fileID: 2100000, guid: 3be9ba36473ac594593ceef2e134d02d, type: 2}
-  hexLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!136 &3130638766752521872
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -160,7 +140,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.4
+  m_Radius: 0.413
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
